@@ -5,6 +5,9 @@ import { NavLink } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const navigation = (props) => {
+
+   
+
     return (
         <Col md={12} >
             <Navbar inverse collapseOnSelect>
@@ -15,8 +18,8 @@ const navigation = (props) => {
                     <Navbar.Toggle />
                 </Navbar.Header>
                 <Navbar.Collapse>
-                    <Nav>
-                        <LinkContainer to={'/patient-list'} exact>
+                    <Nav >
+                        <LinkContainer pullRight to={'/patient-list'} exact>
                             <NavItem eventKey={1}>
                                 Patients
                             </NavItem>
@@ -31,13 +34,13 @@ const navigation = (props) => {
                                 Medications
                             </NavItem>
                         </LinkContainer>
-                        <LinkContainer to={'/loginform'}>
-                            <NavItem eventKey={2}>
+                        <LinkContainer className="mr-auto" to={'/loginform'}>
+                            <NavItem className="mr-auto" eventKey={2}>
                                 Login
                             </NavItem>
                         </LinkContainer>
                         <LinkContainer to={'/registerform'}>
-                            <NavItem eventKey={2}>
+                            <NavItem  eventKey={2}>
                                 Register
                             </NavItem>
                         </LinkContainer>

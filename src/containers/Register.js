@@ -7,14 +7,13 @@ import axios from 'axios'
 import { NavLink } from 'react-router-dom'
 
 
-class Login extends Component {
+class Register extends Component {
 
 constructor(props){
   super(props);
   this.state={
   username:'',
   password:'',
-  tokenString:localStorage.getItem('tokenString')
   }
 
   
@@ -24,23 +23,14 @@ constructor(props){
 
         axios({
             method: 'post',
-            url: 'http://localhost:59074/api/auth/login',
+            url: 'http://localhost:59074/api/auth/register',
             headers: {'Access-Control-Allow-Origin': '*'}, 
             data: {
               'Username': this.state.username,
               'Password': this.state.password
             }
-          }).then(response => {
-            console.log(response)
-            this.setState({
-                tokenString:response.data.tokenString
-            })
-            localStorage.setItem('tokenString', this.state.tokenString)
-            })
-            
-           
-           
-            
+          })
+
 }
 
 render() {
@@ -50,7 +40,7 @@ render() {
         <MuiThemeProvider>
           <div>
           <AppBar className="center"
-             title="Login"
+             title="Register"
            />
            <TextField className="center"
              hintText="Enter your Username"
@@ -75,4 +65,4 @@ render() {
 const style = {
  margin: 15,
 };
-export default Login;
+export default Register;

@@ -1,22 +1,12 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
-import { useAuth } from "./context/auth";
+import { Route, Redirect } from 'react-router-dom';
+import React from 'react'
 
-function PrivateRoute({ component: Component, ...rest }) {
-  const isAuthenticated = useAuth();
+const PrivateRoute = ({component: Component, ...rest}) =>(
+    <Route {...rest} render={(props)=>(
+        localStorage.getItem("tokenString")!==null ? <Component {...props}/> 
+        : <Redirect to='/loginform'/>
+      )
+    }/>
+  )
 
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        isAuthenticated ? (
-          <Component {...props} />
-        ) : (
-          <Redirect to="/" />
-        )
-      }
-    />
-  );
-}
-
-export default PrivateRoute;
+  export default PrivateRoute;
